@@ -12,7 +12,7 @@ namespace DEV_Library.Models
 
         public string TaskName { get; set; } 
 
-        public string Description { get; set; } 
+        public string TaskDescription { get; set; } 
 
         public string DueDate { get; set; }
 
