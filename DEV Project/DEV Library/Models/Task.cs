@@ -8,13 +8,13 @@ namespace DEV_Library.Models
     {
         public Guid Id { get; set; }
 
-        public Guid CourseID { get; set; } 
+        public Guid CourseId { get; set; } 
 
         public string TaskName { get; set; } 
 
         public string TaskDescription { get; set; } 
 
-        public string DueDate { get; set; }
+        public DateTime DueDate { get; set; }
 
     }
 }

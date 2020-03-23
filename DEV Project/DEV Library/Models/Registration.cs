@@ -10,7 +10,7 @@ namespace DEV_Library.Models
 
         public Guid StudentId { get; set; } 
 
-        public Guid CourseID { get; set; }
+        public Guid CourseId { get; set; }
 
 
     }
