@@ -7,10 +7,10 @@ using DEV_Library;
 
 namespace DEV_DataAccess
 {
-    public class Mapper
+    public static class Mapper
     {
 
-        public DEV_Library.Models.Student MapStudent(Entities.Student student)
+        public static DEV_Library.Models.Student MapStudent(Entities.Student student)
         {
             return new DEV_Library.Models.Student
             {
@@ -22,7 +22,7 @@ namespace DEV_DataAccess
             };
 
         }
-        public Entities.Student MapStudent(DEV_Library.Models.Student student)
+        public static Entities.Student MapStudent(DEV_Library.Models.Student student)
         {
             return new Entities.Student
             {
@@ -33,7 +33,7 @@ namespace DEV_DataAccess
                 Username = student.Username
             };
         }
-        public DEV_Library.Models.Instructor  MapInstructor(Entities.Instructor instructor)
+        public static DEV_Library.Models.Instructor  MapInstructor(Entities.Instructor instructor)
         {
             return new DEV_Library.Models.Instructor
             {
@@ -45,7 +45,7 @@ namespace DEV_DataAccess
             };
         }
 
-        public Entities.Instructor MapInstructor(DEV_Library.Models.Instructor instructor)
+        public static Entities.Instructor MapInstructor(DEV_Library.Models.Instructor instructor)
         {
             return new Entities.Instructor
             {
@@ -57,7 +57,7 @@ namespace DEV_DataAccess
             };
         }
 
-        public DEV_Library.Models.Course MapCourse(Entities.Course course)
+        public static DEV_Library.Models.Course MapCourse(Entities.Course course)
         {
             return new DEV_Library.Models.Course
             {
@@ -68,7 +68,7 @@ namespace DEV_DataAccess
             };
         }
 
-        public Entities.Course MapCourse(DEV_Library.Models.Course course)
+        public static Entities.Course MapCourse(DEV_Library.Models.Course course)
         {
             return new Entities.Course
             {
@@ -80,7 +80,7 @@ namespace DEV_DataAccess
 
         }
 
-        public DEV_Library.Models.Registration MapRegistration(Entities.Registration registration)
+        public static DEV_Library.Models.Registration MapRegistration(Entities.Registration registration)
         {
             return new DEV_Library.Models.Registration
             {
@@ -90,7 +90,7 @@ namespace DEV_DataAccess
             };
         }
 
-        public Entities.Registration MapRegistration(DEV_Library.Models.Registration registration)
+        public static Entities.Registration MapRegistration(DEV_Library.Models.Registration registration)
         {
             return new Entities.Registration
             {
@@ -100,7 +100,7 @@ namespace DEV_DataAccess
             };
         }
 
-        public DEV_Library.Models.Task MapTask(Entities.Task task)
+        public static DEV_Library.Models.Task MapTask(Entities.Task task)
         {
             return new DEV_Library.Models.Task
             {
@@ -112,7 +112,7 @@ namespace DEV_DataAccess
             };
         }
 
-        public Entities.Task MapTask(DEV_Library.Models.Task task)
+        public static Entities.Task MapTask(DEV_Library.Models.Task task)
         {
             return new Entities.Task
             {
