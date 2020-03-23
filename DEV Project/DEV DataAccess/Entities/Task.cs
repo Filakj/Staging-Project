@@ -1,20 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DEV_DataAccess.Entities
 {
-    public class Task
+    public partial class Task
     {
         public Guid Id { get; set; }
-
-        public Guid CourseID { get; set; }
-
+        public Guid? CourseId { get; set; }
         public string TaskName { get; set; }
-
-        public string Description { get; set; }
-
-        public string DueDate { get; set; }
-
+        public string TaskDescription { get; set; }
+        public DateTime? DueDate { get; set; }
     }
 }
