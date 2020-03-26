@@ -22,11 +22,30 @@ namespace DEV_DataAccess.Repository
 
         }
 
+        public void DeleteTask(Guid Id)
+        {
+            throw new NotImplementedException();
+        }
+
         public DEV_Library.Models.Task GetTaskById(Guid id)
         {
             Entities.Task task = _context.Task.Find(id);
             return Mapper.MapTask(task);
-        }       
+        }
 
+        public IEnumerable<Task> GetTasks()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Task> GetTasksByCourseId(Guid courseId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateTask(Task task)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

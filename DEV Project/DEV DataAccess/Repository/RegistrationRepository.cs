@@ -22,6 +22,26 @@ namespace DEV_DataAccess.Repository
             _context.Add(newRegistration);
         }
 
+        public void DeleteRegistration(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Registration> GetAllRegistrations()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Guid GetCourseIdByStudentId(Guid studentId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Registration> GetRegistrationByCourse(Guid courseId)
+        {
+            throw new NotImplementedException();
+        }
+
         public DEV_Library.Models.Registration GetRegistrationById(Guid id)
         {
             Entities.Registration registration = _context.Registration.Find(id);

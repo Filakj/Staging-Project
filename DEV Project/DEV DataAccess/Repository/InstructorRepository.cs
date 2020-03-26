@@ -22,12 +22,20 @@ namespace DEV_DataAccess.Repository
 
         }
 
+        public void DeleteInstructor(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
         public DEV_Library.Models.Instructor GetInstructorById(Guid id)
         {
             Entities.Instructor instructor = _context.Instructor.Find(id);
             return Mapper.MapInstructor(instructor);
         }
 
-
+        public void UpdateInstructor(Instructor instructor)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

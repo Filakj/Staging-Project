@@ -21,12 +21,25 @@ namespace DEV_DataAccess.Repository
             _context.Add(newCourse);
         }
 
+        public void DeleteCourse(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Course> GetAllCourses()
+        {
+            throw new NotImplementedException();
+        }
+
         public DEV_Library.Models.Course GetCourseById(Guid id)
         {
             Entities.Course course = _context.Course.Find(id);
             return Mapper.MapCourse(course);
         }
 
-
+        public void UpdateCourse(Course course)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
