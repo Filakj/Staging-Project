@@ -14,7 +14,18 @@ namespace DEV_Library.Interface
         /// <returns></returns>
         //public Task<bool> CreateCourseAsync(Logic.Course course);
 
-//TODO Upgrade C# to 8.0 
+        void AddCourse(DEV_Library.Models.Course course);
+
+        DEV_Library.Models.Course GetCourseById(Guid id);
+
+        void UpdateCourse(DEV_Library.Models.Course course);
+
+        IEnumerable<DEV_Library.Models.Course> GetAllCourses();
+
+        void DeleteCourse(Guid id); 
+
+        
+        //TODO Upgrade C# to 8.0 
 
     }
 }
