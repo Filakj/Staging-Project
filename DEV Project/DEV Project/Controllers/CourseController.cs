@@ -59,7 +59,7 @@ namespace DEV_Project.Controllers
         }
           
 
-        // DELETE: api/ApiWithActions/5
+        // DELETE: api/Course/5
         [HttpDelete("{id}")]
         public IActionResult DeleteCourse(Guid id)
         {

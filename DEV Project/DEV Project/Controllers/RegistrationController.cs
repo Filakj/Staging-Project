@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DEV_Library.Interface;
+using DEV_Library.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace DEV_Project.Controllers
 {
@@ -11,38 +14,54 @@ namespace DEV_Project.Controllers
     [ApiController]
     public class RegistrationController : ControllerBase
     {
-        /*
+        private readonly ILogger<RegistrationController> _logger;
+        private readonly IRegistrationRepository _registrationRepository;
+
+        public RegistrationController(ILogger<RegistrationController> logger, IRegistrationRepository registrationRepository)
+        {
+            _logger = logger;
+            _registrationRepository = registrationRepository; 
+        }
+
+
         // GET: api/Registration
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Registration> Get()
         {
-            return new string[] { "value1", "value2" };
+            IEnumerable<Registration> registrations = _registrationRepository.GetAllRegistrations();
+            return registrations.ToList();
         }
 
         // GET: api/Registration/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("{id}")]
+        public IActionResult Get([FromRoute]Guid id)
         {
-            return "value";
+            Registration registration = _registrationRepository.GetRegistrationById(id);
+            _logger.LogInformation($"Getting registration with id: {id}");
+            return Ok(registration);
         }
 
         // POST: api/Registration
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult PostRegistration(Registration registration)
         {
-        }
 
-        // PUT: api/Registration/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
+            _registrationRepository.AddRegistration(registration);
+            _registrationRepository.SaveChanges();
+
+
+            _logger.LogInformation($"Course with id: {registration.Id} has been added.");
+            return CreatedAtAction(nameof(Get), new { id = registration.Id }, registration);
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult DeleteRegistration(Guid id)
         {
+            _registrationRepository.DeleteRegistration(id);
+            _registrationRepository.SaveChanges();
+
+            return Content($"Registration with id: {id} has been deleted.");
         }
-        */
     }
 }
