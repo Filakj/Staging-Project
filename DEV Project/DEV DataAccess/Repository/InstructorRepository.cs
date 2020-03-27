@@ -24,7 +24,8 @@ namespace DEV_DataAccess.Repository
 
         public void DeleteInstructor(Guid id)
         {
-            throw new NotImplementedException();
+            Entities.Course course = _context.Course.Find(id);
+            _context.Remove(course); 
         }
 
         public DEV_Library.Models.Instructor GetInstructorById(Guid id)
@@ -35,7 +36,10 @@ namespace DEV_DataAccess.Repository
 
         public void UpdateInstructor(Instructor instructor)
         {
-            throw new NotImplementedException();
+            Entities.Instructor currentInstructor = _context.Instructor.Find(instructor.Id);
+            Entities.Instructor updatedInstructor = Mapper.MapInstructor(instructor);
+
+            _context.Entry(currentInstructor).CurrentValues.SetValues(updatedInstructor);
         }
     }
 }
