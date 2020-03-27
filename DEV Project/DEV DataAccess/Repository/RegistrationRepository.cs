@@ -35,14 +35,23 @@ namespace DEV_DataAccess.Repository
             return registrations.Select(Mapper.MapRegistration);
         }
 
-        public Guid GetCourseIdByStudentId(Guid studentId)
+
+        public IEnumerable<DEV_Library.Models.Registration> GetCoursesIdByStudentId(Guid studentId)
         {
-            throw new NotImplementedException();
+            IEnumerable<Entities.Registration> studentRegistrations = from r in _context.Registration
+                                                                      where r.StudentId == studentId
+                                                                      select r;
+
+            return studentRegistrations.Select(Mapper.MapRegistration); 
         }
 
-        public IEnumerable<Registration> GetRegistrationByCourse(Guid courseId)
+        public IEnumerable<Registration> GetRegistrationsByCourseId(Guid courseId)
         {
-            throw new NotImplementedException();
+            IEnumerable<Entities.Registration> courseRegistrations = from r in _context.Registration
+                                                                      where r.CourseId == courseId
+                                                                      select r;
+
+            return courseRegistrations.Select(Mapper.MapRegistration);
         }
 
         public DEV_Library.Models.Registration GetRegistrationById(Guid id)
@@ -50,7 +59,6 @@ namespace DEV_DataAccess.Repository
             Entities.Registration registration = _context.Registration.Find(id);
             return Mapper.MapRegistration(registration);
         }
-
 
 
     }

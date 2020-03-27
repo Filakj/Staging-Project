@@ -16,10 +16,9 @@ namespace DEV_Library.Interface
         void DeleteRegistration(Guid id);
 
 
+        IEnumerable<DEV_Library.Models.Registration> GetCoursesIdByStudentId(Guid studentId);
 
-        Guid GetCourseIdByStudentId(Guid studentId);
-
-        IEnumerable<DEV_Library.Models.Registration> GetRegistrationByCourse(Guid courseId); 
+        IEnumerable<DEV_Library.Models.Registration> GetRegistrationsByCourseId(Guid courseId); 
 
         
 
