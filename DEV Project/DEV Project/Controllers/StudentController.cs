@@ -14,7 +14,7 @@ namespace DEV_Project.Controllers
     public class StudentController : ControllerBase
     {
 
-
+        /*
         // GET: api/Student
         [HttpGet]
         public IEnumerable<string> Get()
@@ -46,5 +46,6 @@ namespace DEV_Project.Controllers
         public void Delete(int id)
         {
         }
+        */
     }
 }
