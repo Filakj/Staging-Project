@@ -64,5 +64,27 @@ namespace DEV_Project.Controllers
 
             return Content($"Registration with id: {id} has been deleted.");
         }
+
+
+        // GET: api/Registration/Course/5
+        [HttpGet("Course/{CourseId}")]
+        public IActionResult GetByCourseId([FromRoute]Guid id)
+        {
+            IEnumerable<Registration> registrations = _registrationRepository.GetRegistrationsByCourseId(id); 
+
+            _logger.LogInformation($"Getting registration based on course with id: {id}");
+            return Ok(registrations);
+        }
+
+        // GET: api/Registration/Student/5
+        [HttpGet("Student/StudentId}")]
+        public IActionResult GetByStudentId([FromRoute]Guid id)
+        {
+            IEnumerable<Registration> registrations = _registrationRepository.GetCoursesIdByStudentId(id);
+
+            _logger.LogInformation($"Getting registration based on student with id: {id}");
+            return Ok(registrations);
+        }
+
     }
 }
