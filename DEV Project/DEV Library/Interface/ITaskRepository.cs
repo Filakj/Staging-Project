@@ -6,6 +6,7 @@ namespace DEV_Library.Interface
 {
     public interface ITaskRepository
     {
+        void AddTask(DEV_Library.Models.Task task);
         IEnumerable<DEV_Library.Models.Task> GetTasks();
 
         DEV_Library.Models.Task GetTaskById(Guid id);
