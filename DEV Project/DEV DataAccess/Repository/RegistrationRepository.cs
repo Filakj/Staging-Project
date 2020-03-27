@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using DEV_Library.Interface;
 using DEV_Library.Models;
@@ -24,12 +25,14 @@ namespace DEV_DataAccess.Repository
 
         public void DeleteRegistration(Guid id)
         {
-            throw new NotImplementedException();
+            Entities.Registration registration = _context.Registration.Find(id);
+            _context.Remove(registration); 
         }
 
-        public IEnumerable<Registration> GetAllRegistrations()
+        public IEnumerable<DEV_Library.Models.Registration> GetAllRegistrations()
         {
-            throw new NotImplementedException();
+            IEnumerable<Entities.Registration> registrations = _context.Registration;
+            return registrations.Select(Mapper.MapRegistration);
         }
 
         public Guid GetCourseIdByStudentId(Guid studentId)

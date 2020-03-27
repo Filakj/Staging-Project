@@ -34,7 +34,7 @@ namespace DEV_DataAccess.Repository
             return Mapper.MapInstructor(instructor);
         }
 
-        public void UpdateInstructor(Instructor instructor)
+        public void UpdateInstructor(DEV_Library.Models.Instructor instructor)
         {
             Entities.Instructor currentInstructor = _context.Instructor.Find(instructor.Id);
             Entities.Instructor updatedInstructor = Mapper.MapInstructor(instructor);
