@@ -56,5 +56,10 @@ namespace DEV_DataAccess.Repository
 
             _context.Entry(currentTask).CurrentValues.SetValues(updatedTask);
         }
+
+        public void SaveChanges()
+        {
+            _context.SaveChanges();
+        }
     }
 }

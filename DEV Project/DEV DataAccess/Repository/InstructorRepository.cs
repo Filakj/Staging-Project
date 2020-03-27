@@ -41,5 +41,10 @@ namespace DEV_DataAccess.Repository
 
             _context.Entry(currentInstructor).CurrentValues.SetValues(updatedInstructor);
         }
+
+        public void SaveChanges()
+        {
+            _context.SaveChanges();
+        }
     }
 }

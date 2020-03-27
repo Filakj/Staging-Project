@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using DEV_Library.Interface;
-using DEV_Library.Models; 
+using DEV_Library.Models;
+using Microsoft.Extensions.Logging;
 
 namespace DEV_Project.Controllers
 {
@@ -13,14 +14,25 @@ namespace DEV_Project.Controllers
     [ApiController]
     public class StudentController : ControllerBase
     {
+        private readonly ILogger<StudentController> _logger;
+        private readonly IStudentRepository _studentRepository; 
+
+        public StudentController(ILogger<StudentController> logger, IStudentRepository studentRepository)
+        {
+            _logger = logger;
+            _studentRepository = studentRepository;
+        }
+
+        //GET: api/Student/5
+        [HttpGet("{id}")]
+        public IActionResult GetStudentById(Guid id)
+        {
+            Student student = _studentRepository.GetStudentById(id);
+            return Ok(student);
+        }
+
 
         /*
-        // GET: api/Student
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
 
         // GET: api/Student/5
         [HttpGet("{id}", Name = "Get")]
@@ -29,6 +41,7 @@ namespace DEV_Project.Controllers
             return "value";
         }
 
+        
         // POST: api/Student
         [HttpPost]
         public void Post([FromBody] string value)

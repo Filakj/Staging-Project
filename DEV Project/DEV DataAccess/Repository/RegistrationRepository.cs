@@ -60,6 +60,11 @@ namespace DEV_DataAccess.Repository
             return Mapper.MapRegistration(registration);
         }
 
+        public void SaveChanges()
+        {
+            _context.SaveChanges();
+        }
+
 
     }
 }

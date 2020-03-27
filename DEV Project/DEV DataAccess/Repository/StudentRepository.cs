@@ -43,6 +43,11 @@ namespace DEV_DataAccess.Repository
             _context.Entry(currentStudent).CurrentValues.SetValues(updatedStudent); 
         }
 
+        public void SaveChanges()
+        {
+            _context.SaveChanges();
+        }
+
 
 
 
