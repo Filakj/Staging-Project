@@ -14,6 +14,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.OpenApi.Models;
 
 
 namespace DEV_Project
@@ -59,11 +61,39 @@ namespace DEV_Project
                 options.AddPolicy(AllMyOrigins, b => b.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             });
 
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = "DEV API", Version = "v1" });
+            });
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            var swaggerOptions = new SwaggerOptions();
+
+            Configuration.GetSection(nameof(SwaggerOptions)).Bind(swaggerOptions);
+
+            app.UseSwagger(options =>
+            {
+                options.RouteTemplate = swaggerOptions.JsonRoute;
+            });
+
+
+
+            app.UseSwaggerUI(options =>
+            {
+                //options.SwaggerEndpoint("/swagger/v1/swagger.json", swaggerOptions.Description);
+                options.SwaggerEndpoint(swaggerOptions.UIEndpoint, swaggerOptions.Description);
+            });
+
+
+
+            app.UseCors(AllMyOrigins);
+
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
