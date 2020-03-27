@@ -39,12 +39,11 @@ namespace DEV_Project.Controllers
         [HttpPost]
         public IActionResult PostInstructor(Instructor instructor)
         {
+            Guid newId = new Guid();
+            instructor.Id = newId;
 
             _instructorRepository.AddInstructor(instructor);
             _instructorRepository.SaveChanges();
-
-            Guid newId = new Guid();
-            instructor.Id = newId; 
        
             return CreatedAtAction(nameof(GetInstructorById), new { id = instructor.Id }, instructor);
         }

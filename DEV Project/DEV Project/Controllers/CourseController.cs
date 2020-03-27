@@ -40,6 +40,8 @@ namespace DEV_Project.Controllers
         [HttpPost]
         public IActionResult PostCourse(Course course)
         {
+            Guid newId = new Guid();
+            course.Id = newId;
 
             _courseRepository.AddCourse(course);
             _courseRepository.SaveChanges();

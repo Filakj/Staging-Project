@@ -45,10 +45,11 @@ namespace DEV_Project.Controllers
         [HttpPost]
         public IActionResult PostRegistration(Registration registration)
         {
+            Guid newId = new Guid();
+            registration.Id = newId;
 
             _registrationRepository.AddRegistration(registration);
             _registrationRepository.SaveChanges();
-
 
             _logger.LogInformation($"Course with id: {registration.Id} has been added.");
             return CreatedAtAction(nameof(Get), new { id = registration.Id }, registration);

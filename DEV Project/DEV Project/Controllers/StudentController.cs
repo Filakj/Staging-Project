@@ -35,12 +35,11 @@ namespace DEV_Project.Controllers
         [HttpPost]
         public IActionResult PostStudent(Student student)
         {
+            Guid newId = new Guid();
+            student.Id = newId;
 
             _studentRepository.AddStudent(student);
             _studentRepository.SaveChanges();
-
-            Guid newId = new Guid();
-            student.Id = newId; 
        
             return CreatedAtAction(nameof(GetStudentById), new { id = student.Id }, student);
         }
