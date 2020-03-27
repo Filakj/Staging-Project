@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using DEV_Library.Interface;
 using DEV_Library.Models;
@@ -24,7 +25,8 @@ namespace DEV_DataAccess.Repository
 
         public void DeleteTask(Guid Id)
         {
-            throw new NotImplementedException();
+            Entities.Task task = _context.Task.Find(Id);
+            _context.Remove(task); 
         }
 
         public DEV_Library.Models.Task GetTaskById(Guid id)
@@ -33,19 +35,26 @@ namespace DEV_DataAccess.Repository
             return Mapper.MapTask(task);
         }
 
-        public IEnumerable<Task> GetTasks()
+        public IEnumerable<DEV_Library.Models.Task> GetTasks()
         {
-            throw new NotImplementedException();
+            IEnumerable<Entities.Task> tasks = _context.Task;
+            return tasks.Select(Mapper.MapTask); 
         }
 
-        public IEnumerable<Task> GetTasksByCourseId(Guid courseId)
+        public IEnumerable<DEV_Library.Models.Task> GetTasksByCourseId(Guid courseId)
         {
-            throw new NotImplementedException();
+            IEnumerable<Entities.Task> tasks = from t in _context.Task
+                                               where t.CourseId == courseId
+                                               select t;
+            return tasks.Select(Mapper.MapTask);                            
         }
 
-        public void UpdateTask(Task task)
+        public void UpdateTask(DEV_Library.Models.Task task)
         {
-            throw new NotImplementedException();
+            Entities.Task currentTask = _context.Task.Find(task.Id);
+            Entities.Task updatedTask = Mapper.MapTask(task);
+
+            _context.Entry(currentTask).CurrentValues.SetValues(updatedTask);
         }
     }
 }
