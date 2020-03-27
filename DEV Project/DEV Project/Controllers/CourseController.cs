@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DEV_Library.Interface;
+using DEV_Library.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace DEV_Project.Controllers
 {
@@ -11,38 +14,59 @@ namespace DEV_Project.Controllers
     [ApiController]
     public class CourseController : ControllerBase
     {
-        /*
+        private readonly ILogger<CourseController> _logger;
+        private readonly ICourseRepository _courseRepository;
+        
+        
         // GET: api/Course
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Course> GetAllCourses()
         {
-            return new string[] { "value1", "value2" };
+            IEnumerable<Course> courses = _courseRepository.GetAllCourses();
+            return courses.ToList(); 
         }
 
+
         // GET: api/Course/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("{id}")]
+        public IActionResult Get([FromRoute]Guid id)
         {
-            return "value";
+            Course course = _courseRepository.GetCourseById(id);
+            _logger.LogInformation($"Getting course with id: {id}");
+            return Ok(course);
         }
 
         // POST: api/Course
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult PostCourse(Course course)
         {
+
+            _courseRepository.AddCourse(course);
+            _courseRepository.SaveChanges();
+
+            _logger.LogInformation($"Course with id: {course.Id} has been added.");
+            return CreatedAtAction(nameof(Get), new { id = course.Id }, course);
         }
 
         // PUT: api/Course/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
+        public IActionResult Put(Course course)
+        {    
+                _courseRepository.UpdateCourse(course);
+                _courseRepository.SaveChanges();
+
+            return NoContent();
         }
+          
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult DeleteCourse(Guid id)
         {
+            _courseRepository.DeleteCourse(id);
+            _courseRepository.SaveChanges();
+
+            return Content($"Course with id: {id} has been deleted.");
         }
-        */
     }
 }
