@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using DEV_Library.Interface;
 using DEV_Library.Models;
@@ -23,12 +24,14 @@ namespace DEV_DataAccess.Repository
 
         public void DeleteCourse(Guid id)
         {
-            throw new NotImplementedException();
+            Entities.Course course = _context.Course.Find(id);
+            _context.Remove(course); 
         }
 
-        public IEnumerable<Course> GetAllCourses()
+        public IEnumerable<DEV_Library.Models.Course> GetAllCourses()
         {
-            throw new NotImplementedException();
+            IQueryable<Entities.Course> courses =  _context.Course;
+            return courses.Select(Mapper.MapCourse); 
         }
 
         public DEV_Library.Models.Course GetCourseById(Guid id)
@@ -39,7 +42,10 @@ namespace DEV_DataAccess.Repository
 
         public void UpdateCourse(Course course)
         {
-            throw new NotImplementedException();
+            Entities.Course currentCourse = _context.Course.Find(course.Id);
+            Entities.Course updatedCourse = Mapper.MapCourse(course);
+
+            _context.Entry(currentCourse).CurrentValues.SetValues(updatedCourse);
         }
     }
 }
