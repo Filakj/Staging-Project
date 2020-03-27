@@ -31,34 +31,43 @@ namespace DEV_Project.Controllers
             return Ok(student);
         }
 
-
-        /*
-
-        // GET: api/Student/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        // POST: api/Student
+        [HttpPost]
+        public IActionResult PostStudent(Student student)
         {
-            return "value";
+
+            _studentRepository.AddStudent(student);
+            _studentRepository.SaveChanges();
+
+            Guid newId = new Guid();
+            student.Id = newId; 
+       
+            return CreatedAtAction(nameof(GetStudentById), new { id = student.Id }, student);
+        }
+
+        // DELETE: api/Student/5
+        [HttpDelete("{id}")]
+        public IActionResult DeleteStudent(Guid id)
+        {
+            _studentRepository.DeleteStudent(id);
+            _studentRepository.SaveChanges();
+
+            return Content($"Account with id: {id} has been deleted.");
         }
 
         
-        // POST: api/Student
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
         // PUT: api/Student/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(Student student)
         {
+            _studentRepository.UpdateStudent(student);
+            _studentRepository.SaveChanges();
+
+            return NoContent();
         }
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
-        */
+
+
+     
     }
 }

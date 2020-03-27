@@ -14,7 +14,7 @@ namespace DEV_Library.Interface
 
         void DeleteTask(Guid Id);
 
-
+        void SaveChanges();
         IEnumerable<DEV_Library.Models.Task> GetTasksByCourseId(Guid courseId);
         
     }

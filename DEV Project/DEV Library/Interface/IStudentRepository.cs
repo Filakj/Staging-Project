@@ -12,7 +12,7 @@ namespace DEV_Library.Interface
 
         void UpdateStudent(DEV_Library.Models.Student student);
 
-        void DeleteStudent(Guid id); 
-
+        void DeleteStudent(Guid id);
+        void SaveChanges();
     }
 }

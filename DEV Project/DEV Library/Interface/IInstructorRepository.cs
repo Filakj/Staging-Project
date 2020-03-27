@@ -15,6 +15,6 @@ namespace DEV_Library.Interface
 
         void DeleteInstructor(Guid id);
 
-
+        void SaveChanges();
     }
 }

@@ -22,9 +22,10 @@ namespace DEV_Library.Interface
 
         IEnumerable<DEV_Library.Models.Course> GetAllCourses();
 
-        void DeleteCourse(Guid id); 
+        void DeleteCourse(Guid id);
 
-        
+        void SaveChanges();
+
         //TODO Upgrade C# to 8.0 
 
     }

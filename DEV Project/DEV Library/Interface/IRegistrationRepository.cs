@@ -18,9 +18,9 @@ namespace DEV_Library.Interface
 
         IEnumerable<DEV_Library.Models.Registration> GetCoursesIdByStudentId(Guid studentId);
 
-        IEnumerable<DEV_Library.Models.Registration> GetRegistrationsByCourseId(Guid courseId); 
+        IEnumerable<DEV_Library.Models.Registration> GetRegistrationsByCourseId(Guid courseId);
 
-        
+        void SaveChanges();
 
     }
 }
