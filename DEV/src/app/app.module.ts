@@ -2,13 +2,31 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { AppNavbarComponent } from './app-navbar/app-navbar.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { LogInComponent } from './log-in/log-in.component';
+import { CourseDisplayComponent } from './course-display/course-display.component';
+import { TaskDisplayComponent } from './task-display/task-display.component';
+import { TaskCreateComponent } from './task-create/task-create.component';
+import { CourseCreateComponent } from './course-create/course-create.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AppNavbarComponent,
+    SignUpComponent,
+    LogInComponent,
+    CourseDisplayComponent,
+    TaskDisplayComponent,
+    TaskCreateComponent,
+    CourseCreateComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
