@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { AppNavbarComponent } from './app-navbar/app-navbar.component';
+
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { SignUpComponent } from './sign-up/sign-up.component';
@@ -11,6 +11,7 @@ import { CourseDisplayComponent } from './course-display/course-display.componen
 import { TaskDisplayComponent } from './task-display/task-display.component';
 import { TaskCreateComponent } from './task-create/task-create.component';
 import { CourseCreateComponent } from './course-create/course-create.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CourseCreateComponent } from './course-create/course-create.component';
     CourseDisplayComponent,
     TaskDisplayComponent,
     TaskCreateComponent,
-    CourseCreateComponent
+    CourseCreateComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
