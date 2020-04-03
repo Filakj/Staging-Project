@@ -1,1 +1,23 @@
-<p>course-create works!</p>
+<!-- Bootstrap -->
+<div style="margin: 20px; align-content: center;">
+    <!-- 
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)">
+    -->
+    <form>
+
+      <div class="form-group">
+        <label for="username">Course Name</label>
+        <input type="text" class="form-control col-md-5" id="username" formControlName="username" placeholder="Enter username">
+      </div>
+      <div class="form-group">
+        <label for="password">Section Number </label>
+        <input type="password" class="form-control col-md-5" id="password" formControlName="password" placeholder="Enter password">
+      </div>
+      <div class="form-group">
+        <label for="firstname">First Name</label>
+        <input type="text" class="form-control col-md-5" id="firstname" formControlName="firstname" placeholder="Enter first name">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Create Course</button>
+    </form>
+</div>

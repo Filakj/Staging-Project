@@ -12,18 +12,21 @@ import { TaskDisplayComponent } from './task-display/task-display.component';
 import { TaskCreateComponent } from './task-create/task-create.component';
 import { CourseCreateComponent } from './course-create/course-create.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AllcoursesComponent } from './allcourses/allcourses.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AppNavbarComponent,
     SignUpComponent,
     LogInComponent,
     CourseDisplayComponent,
     TaskDisplayComponent,
     TaskCreateComponent,
     CourseCreateComponent,
-    NavbarComponent
+    NavbarComponent,
+    AllcoursesComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
