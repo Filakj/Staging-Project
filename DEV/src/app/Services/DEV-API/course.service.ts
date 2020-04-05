@@ -19,24 +19,29 @@ export class CourseService {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  getStudentById(id: string): Promise<Course> {
+  getCourses(): Observable<any>{
+     return this.httpClient.get<Course>(this.courseUrl, this.httpOptions); 
+  }
+
+  getCourseById(id: string): Promise<Course> {
     var completeUrl = `${this.courseUrl}/${id}`;
     console.log(completeUrl);
     return this.httpClient.get<Course>(completeUrl).toPromise();
   }
 
-  deleteStudent(id: string){ 
+  deleteCourse(id: string): Observable<any>{ 
     var completeUrl = `${this.courseUrl}/${id}`;
-
+    console.log(completeUrl); 
+    return this.httpClient.delete<Course>(completeUrl, this.httpOptions);
   }
-
-
- updateStudent(){ 
-
+ updateCourse(updatedCourse: Course): Observable<any>{
+   console.log(this.courseUrl);
+   return this.httpClient.put<Course>(this.courseUrl, updatedCourse, this.httpOptions);
  }
 
- postStudent(){ 
-
+ postCourse(newCourse: PostCourse): Observable<any> { 
+  console.log(this.courseUrl); 
+  return this.httpClient.post(this.courseUrl, newCourse,this.httpOptions);
  }
 
 
