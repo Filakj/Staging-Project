@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 //DEV - API Models 
 import { Instructor } from '../../Models/instructor';
+import { PostInstructor } from '../../Models/post-instructor';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +36,7 @@ export class InstructorService {
   return this.httpClient.put(completeUrl, updatedInstructor, this.httpOptions);
  }
 
- postInstructor(newInstructor: Instructor): Observable<Instructor> {
+ postInstructor(newInstructor: PostInstructor): Observable<Instructor> {
     return this.httpClient.post<Instructor>(this.InstructorUrl, newInstructor, this.httpOptions);
 }
 }
