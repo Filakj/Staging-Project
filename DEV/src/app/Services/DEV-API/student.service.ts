@@ -23,6 +23,11 @@ export class StudentService {
     console.log(completeUrl);
     return this.httpClient.get<Student>(completeUrl).toPromise();
   }
+  getStudentByEmail(email: string): Promise<Student> {
+    var completeUrl = `${this.StudentUrl}/Email/${email}`;
+    console.log(completeUrl);
+    return this.httpClient.get<Student>(completeUrl).toPromise();;
+  }
 
   deleteStudent(id: string): Observable<Student> { 
     var completeUrl = `${this.StudentUrl}/${id}`;
