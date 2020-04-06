@@ -14,9 +14,9 @@ import { Registration } from '../Models/registration';
 })
 export class AllcoursesComponent implements OnInit {
 
-  courses: Course[] = null;
-  courseIDs: string[] = null;
-  registrations: Registration[] = null; 
+  courses: Course[]
+  courseIDs: string[] 
+  registrations: Registration[]
 
   constructor(
     private registrationService: RegistrationService,
@@ -24,30 +24,17 @@ export class AllcoursesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
     this.getStudentRegistrations(); 
   }
-  getStudentRegistrations(){ 
+
+  getStudentRegistrations():void{ 
     console.log('STUDENT ID'); 
     var sID = localStorage.getItem('Student Id');
     console.log(sID); 
 
-    this.registrationService.getRegistrationByStudentId(sID).then(Response => this.registrations = Response); 
-   
-    this.getStudentCourses();
-  }
-  
-  getStudentCourses(){ 
-    for (let e in this.registrations) {
-      console.log('hello'); 
-    }
-   
-  }
-  
-  getCourses(){ 
+    this.registrationService.getRegistrationByStudentId(sID)
+    .then(Response => this.registrations);   
   
   }
-
   
-
 }

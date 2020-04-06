@@ -17,7 +17,7 @@ const routes: Routes = [
     {path: 'course/:id/tasks', component: TaskDisplayComponent}, 
     {path: 'login', component: LogInComponent },
     {path: 'signup', component: SignUpComponent },
-    {path: 'course/id', component: CourseDisplayComponent}, 
+    {path: 'course/:id', component: CourseDisplayComponent}, 
     {path: 'course/:id/create-task', component: TaskCreateComponent},
     {path: 'courses', component: AllcoursesComponent},
     {path: 'myaccount', component: MyAccountComponent},
