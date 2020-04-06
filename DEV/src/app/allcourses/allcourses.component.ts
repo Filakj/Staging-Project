@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
+import { RegistrationService } from '../Services/DEV-API/registration.service';
+import { CourseService } from '../Services/DEV-API/course.service';
+
+import { Course } from '../Models/course';  
+import { Registration } from '../Models/registration';  
+
+
 @Component({
   selector: 'app-allcourses',
   templateUrl: './allcourses.component.html',
@@ -7,9 +14,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AllcoursesComponent implements OnInit {
 
-  constructor() { }
+  courses: Course[] = null;
+  courseIDs: string[] = null;
+  registrations: Registration[] = null; 
+
+  constructor(
+    private registrationService: RegistrationService,
+    private courseService: CourseService,
+  ) { }
 
   ngOnInit(): void {
+
+    this.getStudentRegistrations(); 
   }
+  getStudentRegistrations(){ 
+    console.log('STUDENT ID'); 
+    var sID = localStorage.getItem('Student Id');
+    console.log(sID); 
+
+    this.registrationService.getRegistrationByStudentId(sID).then(Response => this.registrations = Response); 
+   
+    this.getStudentCourses();
+  }
+  
+  getStudentCourses(){ 
+    for (let e in this.registrations) {
+      console.log('hello'); 
+    }
+   
+  }
+  
+  getCourses(){ 
+  
+  }
+
+  
 
 }

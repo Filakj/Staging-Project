@@ -8,7 +8,8 @@ import { TaskDisplayComponent } from './task-display/task-display.component';
 import { TaskCreateComponent } from './task-create/task-create.component';
 import { CourseCreateComponent } from './course-create/course-create.component';
 import { AllcoursesComponent } from './allcourses/allcourses.component'
-import { HomeComponent } from './home/home.component'
+import { HomeComponent } from './home/home.component';
+import { MyAccountComponent } from './my-account/my-account.component';
 const routes: Routes = [
   
     {path: '', component: HomeComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
     {path: 'course/id', component: CourseDisplayComponent}, 
     {path: 'course/:id/create-task', component: TaskCreateComponent},
     {path: 'courses', component: AllcoursesComponent},
+    {path: 'myaccount', component: MyAccountComponent},
         //testing purpose 
     {path: 'create-task', component: TaskCreateComponent}
 

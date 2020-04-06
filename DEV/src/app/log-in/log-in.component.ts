@@ -44,6 +44,7 @@ export class LogInComponent implements OnInit {
       localStorage.setItem("Student Id",this.currentStudent.id.toString()); 
       localStorage.setItem("First Name", this.currentStudent.firstName);
       localStorage.setItem("Last Name", this.currentStudent.lastName);
+      localStorage.setItem("Role", "student");
       alert(localStorage.getItem("Student Id"));
       location.href = "http://localhost:4200/"
   }

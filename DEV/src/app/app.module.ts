@@ -14,6 +14,7 @@ import { CourseCreateComponent } from './course-create/course-create.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AllcoursesComponent } from './allcourses/allcourses.component';
 import { HomeComponent } from './home/home.component';
+import { MyAccountComponent } from './my-account/my-account.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { HomeComponent } from './home/home.component';
     CourseCreateComponent,
     NavbarComponent,
     AllcoursesComponent,
-    HomeComponent
+    HomeComponent,
+    MyAccountComponent
   ],
   imports: [
     BrowserModule,

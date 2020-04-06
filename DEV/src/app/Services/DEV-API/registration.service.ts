@@ -36,16 +36,16 @@ export class RegistrationService {
     return this.httpClient.post(this.RegistrationUrl, this.httpOptions);
   }
 
-  getRegistrationsByCourseId(courseId: string):Observable<any>{ 
+  getRegistrationsByCourseId(courseId: string):Promise<Registration[]>{ 
     var completeUrl = `${this.RegistrationUrl}/Course/${courseId}`;
     console.log(completeUrl);
-    return this.httpClient.post(completeUrl, this.httpOptions); 
+    return this.httpClient.get<Registration[]>(completeUrl).toPromise(); 
   }
 
-  getRegistrationByStudentId(studentId: string):Observable<any>{ 
+  getRegistrationByStudentId(studentId: string):Promise<Registration[]>{ 
     var completeUrl = `${this.RegistrationUrl}/Student/${studentId}`;
     console.log(completeUrl);
-    return this.httpClient.post(completeUrl, this.httpOptions); 
+    return this.httpClient.get<Registration[]>(completeUrl).toPromise(); 
   }
   
 }
